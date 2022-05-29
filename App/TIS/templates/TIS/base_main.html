@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<h2>Название курса</h2>
+
+<h3>Глава {{ chapter_name }}</h3>
+
+<h4>Тема {{ topic_name }}</h4>
+
+<p>{{ theor_mat }}</p>
+
+<ul>
+{% for chapter, topics in panel.items %}
+    <li>{{ chapter }}</li>
+    <ul>
+    {% for topic_obj in topics %}
+        <li><a href="{% url 'topic' topic_obj.id_topic %}">{{ topic_obj.topic_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% endfor %}
+</ul>
+
+</body>
+</html>
