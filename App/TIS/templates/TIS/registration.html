@@ -8,35 +8,130 @@
             display: flex;
             height: 100vh;
             margin: 0;
-            background: url("../../static/pictures/hand-painted-watercolor-background-pink-with-sky-and-clouds-shape_41066-2077.png") no-repeat center center fixed;
+            background: url("../../static/pictures/cloud_background.jpg") no-repeat center center fixed;
+            background-size: auto;
+            background-size: cover; 
         }
+
         form {
-            width: 250px;
-            border: 1px solid;
+            width: 305px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             margin: 20vh auto;
             border-radius: 15px;
+            height: 427px;
+
+            background: url("../../static/pictures/suda.jpg") no-repeat center center; 
+            background-size: auto;
+            background-size: cover;            
+            box-shadow: 0 4px 4px rgba(0,0,0,.25);
         }
+
+        form h4 {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .group__wrapper select,
+        form input {
+            height: 24px;
+            border-radius: 5px;
+            border: 1px black solid;
+        }
+
+        .group__wrapper select {
+            height: 28px;
+        }
+
+        form label {
+            font-size: 20px;
+        }
+
+        form button {
+            background-color: #b0e8ff;
+            border-color: #048fc8;
+            border-radius: 5px;
+            height: 38px;
+            width: 121px;
+            display: flex;
+            margin: 20px auto;
+            font-size: 19px;
+            padding: 5px;
+            color: darkblue;
+        }
+
+        .group__wrapper,
+        .patronomic__wrapper,
+        .name__wrapper,
+        .surname__wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 45%;
+        }
+
+        .group__wrapper,
+        .name__wrapper {
+            margin-left: auto;
+        }
+
+        .second-row,
+        .name-surname__wrapper {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        .login__wrapper,
+        .password__wrapper {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
     </style>
 </head>
 <body>
 <form action="{% url 'registration' %}" method="post">
     <h4>Регистрация</h4>
     {% csrf_token %}
-    <p><label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}: </label>{{ form.last_name }}</p>
-    <div>{{ form.last_name.errors }}</div>
-    <p><label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}: </label>{{ form.first_name }}</p>
-    <div>{{ form.first_name.errors }}</div>
-    <p><label for="{{ form.patronymic.id_for_label }}">{{ form.patronymic.label }}: </label>{{ form.patronymic }}</p>
-    <div>{{ form.patronymic.errors }}</div>
-    <p><label for="{{ form.num_group.id_for_label }}">{{ form.num_group.label}}: </label>{{ form.num_group }}</p>
-    <div>{{ form.num_group.errors }}</div>
-    <p><label for="{{ form.username.id_for_label }}">{{ form.username.label }}: </label>{{ form.username }}</p>
-    <div>{{ form.username.errors }}</div>
-    <p><label for="{{ form.password.id_for_label }}">{{ form.password.label }}: </label>{{ form.password }}</p>
-    <div>{{ form.password.errors }}</div>
+    <div class="name-surname__wrapper">
+        <div class="surname__wrapper">
+            <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+            {{ form.last_name }}
+            <div>{{ form.last_name.errors }}</div>
+        </div>
+        <div class="name__wrapper">
+        <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+        {{ form.first_name }}
+        </div>
+        <div>{{ form.first_name.errors }}</div>
+    </div>
+    <div class="second-row">
+        <div class="patronomic__wrapper">
+            <label for="{{ form.patronymic.id_for_label }}">{{ form.patronymic.label }}</label>
+            {{ form.patronymic }}
+            <div>{{ form.patronymic.errors }}</div>
+        </div>
+        <div class="group__wrapper">
+            <label for="{{ form.num_group.id_for_label }}">{{ form.num_group.label }}</label>
+            {{ form.num_group }}
+            <div>{{ form.num_group.errors }}</div>
+        </div>
+    </div>
+    <div class="login__wrapper">
+        <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label> 
+        {{ form.username }}
+        <div>{{ form.username.errors }}</div>
+    </div>
+    <div class="password__wrapper">
+        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+        {{ form.password }}
+        <div>{{ form.password.errors }}</div>
+    </div>
     <button type="submit">Регистрация</button>
 </form>
 </body>
