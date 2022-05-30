@@ -2,16 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="" type="text/css">
     <title>{{ title }}</title>
     <style>
         #zatemnenie {
-            background: rgba(102, 102, 102, 0.5);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            display: none;
+        background: rgba(102, 102, 102, 0.5);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
         }
 
         #okno {
@@ -50,28 +51,110 @@
         .close:hover {
             background: #e6e6ff;
         }
+
+        .page-title {
+            background-color: #0000CD;
+            margin-top: 50px;
+            margin-bottom: 0;
+            padding: 20px 0;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding-left: 15px;
+            font-size: 69px;
+        }
+
+        body {
+            height: 100vh;
+            background: url("../../static/pictures/background.jpg") no-repeat center center fixed;
+            background-size: auto;
+            background-size: cover;
+            margin: 0;
+        }
+
+        .log-in__wrapper {
+            transform: translateY(-90%);
+        }
+
+        .log-in-button {
+            display: flex;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #0000CD;
+            color: #fff;
+            height: 70px;
+            width: 140px;
+            border-radius: 15px;
+            border-color: #0000CD;
+        }
+
+        .log-in-button a{
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            margin: auto;
+            font-weight: bold;
+            font-size: 43px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .subtitle {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 400;
+            font-size: 23px;
+            display: flex;
+            justify-content: center;
+        }
+
+        #authorization-page__wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 104vh;
+        }
+
+        .footer-title h2 {
+            width: 40%;
+            left: calc(60% - 25px);
+            position: fixed;
+            margin: 0;
+            text-align: justify;
+            padding: 10px;
+            font-size: 18px;
+            font-weight: 400;
+            font-style: italic;
+            top: 93vh;
+        }
     </style>
 </head>
 
 <body>
-<h2>Технологии информационной безопасности</h2>
-<div id="zatemnenie">
-    <div id="okno">
-        <h4>Вход</h4>
-        Логин
-        <input name="Login" type="text"/>
-        Пароль
-        <input name="Login" type="password"/>
-        <button>
-            <a href="fdffffff">Войти</a>
+    <div id="authorization-page__wrapper">
+    <h2 class="page-title">ТЕХНОЛОГИИ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ</h2>
+    <div id="zatemnenie">
+        <div id="okno">
+            <h4>Вход</h4>
+            Логин
+            <input name="Login" type="text"/>
+            Пароль
+            <input name="Login" type="password"/>
+            <button>
+                <a href="fdffffff">Войти</a>
+            </button>
+            <a href="#" class="close">Назад</a>
+            <a href="{% url 'registration' %}">Регистрация</a>
+        </div>
+    </div>
+
+    <div class="log-in__wrapper">
+        <h2 class="subtitle">Для получения доступа к теоретическому и практическому материалу, необходимо авторизоваться</h2>
+        <button class="log-in-button">
+            <a href="#zatemnenie">ВХОД</a>
         </button>
-        <a href="#" class="close">Назад</a>
-        <a href="{% url 'registration' %}">Регистрация</a>
+    </div>
+
+    <div class="footer-title">
+        <h2>Курс предназначен для студентов Белорусского государственного университета информатики и радиоэлектроники</h2>
     </div>
 </div>
-
-<button>
-    <a href="#zatemnenie">Войти</a>
-</button>
 </body>
 </html>
