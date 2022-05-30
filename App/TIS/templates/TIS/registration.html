@@ -8,10 +8,18 @@
 <h4>Регистрация</h4>
 <form action="{% url 'registration' %}" method="post">
     {% csrf_token %}
-    <p><label for="{{ form.surname.id_for_label }}">{{ form.surname.label }}: </label>{{ form.surname }}</p>
-    <div>{{ form.surname.errors }}</div>
+    <p><label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}: </label>{{ form.last_name }}</p>
+    <div>{{ form.last_name.errors }}</div>
+    <p><label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}: </label>{{ form.first_name }}</p>
+    <div>{{ form.first_name.errors }}</div>
+    <p><label for="{{ form.patronymic.id_for_label }}">{{ form.patronymic.label }}: </label>{{ form.patronymic }}</p>
+    <div>{{ form.patronymic.errors }}</div>
     <p><label for="{{ form.num_group.id_for_label }}">{{ form.num_group.label }}: </label>{{ form.num_group }}</p>
     <div>{{ form.num_group.errors }}</div>
+    <p><label for="{{ form.username.id_for_label }}">{{ form.username.label }}: </label>{{ form.username }}</p>
+    <div>{{ form.username.errors }}</div>
+    <p><label for="{{ form.password.id_for_label }}">{{ form.password.label }}: </label>{{ form.password }}</p>
+    <div>{{ form.password.errors }}</div>
     <button type="submit">Регистрация</button>
 </form>
 </body>
