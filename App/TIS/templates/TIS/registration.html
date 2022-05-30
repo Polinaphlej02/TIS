@@ -20,7 +20,8 @@
             flex-direction: column;
             margin: 20vh auto;
             border-radius: 15px;
-          
+            height: 427px;
+
             background: url("../../static/pictures/suda.jpg") no-repeat center center; 
             background-size: auto;
             background-size: cover;            
@@ -35,14 +36,32 @@
             margin-bottom: 20px;
         }
 
+        .group__wrapper select,
         form input {
-            height: 20px;
+            height: 24px;
             border-radius: 5px;
             border: 1px black solid;
         }
 
+        .group__wrapper select {
+            height: 28px;
+        }
+
         form label {
-            font-size: 18px;
+            font-size: 20px;
+        }
+
+        form button {
+            background-color: #b0e8ff;
+            border-color: #048fc8;
+            border-radius: 5px;
+            height: 38px;
+            width: 121px;
+            display: flex;
+            margin: 20px auto;
+            font-size: 19px;
+            padding: 5px;
+            color: darkblue;
         }
 
         .group__wrapper,
@@ -63,8 +82,16 @@
         .name-surname__wrapper {
             display: flex;
             flex-direction: row;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
+
+        .login__wrapper,
+        .password__wrapper {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        
     </style>
 </head>
 <body>
@@ -95,10 +122,16 @@
             <div>{{ form.num_group.errors }}</div>
         </div>
     </div>
-    <p><label for="{{ form.username.id_for_label }}">{{ form.username.label }}: </label>{{ form.username }}</p>
-    <div>{{ form.username.errors }}</div>
-    <p><label for="{{ form.password.id_for_label }}">{{ form.password.label }}: </label>{{ form.password }}</p>
-    <div>{{ form.password.errors }}</div>
+    <div class="login__wrapper">
+        <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label> 
+        {{ form.username }}
+        <div>{{ form.username.errors }}</div>
+    </div>
+    <div class="password__wrapper">
+        <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+        {{ form.password }}
+        <div>{{ form.password.errors }}</div>
+    </div>
     <button type="submit">Регистрация</button>
 </form>
 </body>
