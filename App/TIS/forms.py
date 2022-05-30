@@ -10,3 +10,8 @@ class AddStudent(forms.ModelForm):
         widgets = {
             'password': forms.PasswordInput(),
         }
+
+
+class LoginForm(forms.Form):
+    user_email = forms.EmailField(max_length=100)
+    password = forms.CharField(max_length=100)

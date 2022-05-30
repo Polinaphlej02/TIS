@@ -1,3 +1,6 @@
+from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
@@ -6,12 +9,6 @@ from .utils import DataMixin
 from .models import *
 from .forms import *
 from django.http import HttpResponse
-
-
-# Create your views here.
-def authorization(request):
-    context = {"title": "Авторизация"}
-    return render(request, template_name='TIS/authorization.html', context=context)
 
 
 def main_page(request, topic_id):
@@ -51,3 +48,15 @@ class RegisterStudent(CreateView, DataMixin):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Регистрация")
         return dict(list(context.items()) + list(c_def.items()))
+
+
+class LoginUser(DataMixin, LoginView):
+    form_class = AuthenticationForm
+    template_name = 'TIS/authorization.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        c_def = self.get_user_context(title="Авторизация")
+        return dict(list(context.items()) + list(c_def.items()))
+
+
