@@ -196,15 +196,14 @@
     <div id="zatemnenie">
         <div id="okno">
             <h4>Авторизация</h4>
-            <form method="post">
+            <form method="post" action="{% url 'authorization' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button>Войти</button>
+                {% for f in form %}
+                    <p><label for="{{ f.id_for_label }}">{{ f.label }}: </label>{{ f }}</p>
+                    <div>{{ f.errors }}</div>
+                {% endfor %}
+                <button type="submit">Войти</button>
             </form>
-            <span>Логин</span>
-            <input name="Login" class="input-login" placeholder="12345678@study.bsuir.by" type="text"/>
-            <span>Пароль</span>
-            <input name="Login" type="password"/>
             <a href="#" class="close">Назад</a>
             <hr>
             <a class="registration-btn" href="{% url 'registration' %}">Регистрация</a>

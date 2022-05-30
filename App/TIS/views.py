@@ -51,7 +51,7 @@ class RegisterStudent(CreateView, DataMixin):
 
 
 class LoginUser(DataMixin, LoginView):
-    form_class = AuthenticationForm
+    form_class = LoginForm
     template_name = 'TIS/authorization.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -59,4 +59,5 @@ class LoginUser(DataMixin, LoginView):
         c_def = self.get_user_context(title="Авторизация")
         return dict(list(context.items()) + list(c_def.items()))
 
-
+    def get_success_url(self):
+        return reverse_lazy("registration")

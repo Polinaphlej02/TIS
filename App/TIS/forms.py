@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
+
 from .models import *
 
 
@@ -12,6 +14,6 @@ class AddStudent(forms.ModelForm):
         }
 
 
-class LoginForm(forms.Form):
-    user_email = forms.EmailField(max_length=100)
-    password = forms.CharField(max_length=100)
+class LoginForm(AuthenticationForm):
+    username = forms.CharField(label="Логин", max_length=150)
+    password = forms.CharField(label="Пароль", max_length=128, widget=forms.PasswordInput())
