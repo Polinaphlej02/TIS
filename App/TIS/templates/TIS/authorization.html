@@ -17,7 +17,7 @@
 
         #okno {
             width: 300px;
-            height: 500px;
+            height: 397px;
             text-align: center;
             padding: 15px;
             border: 3px solid #0000cc;
@@ -30,6 +30,59 @@
             left: 0;
             margin: auto;
             background: #fff;
+            z-index: 333;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 4px rgba(0,0,0,.25);
+            background: url("../../static/pictures/background_reg.jpg") no-repeat center center fixed;
+            background-size: auto;
+            background-size: cover;
+        }
+
+        #okno h4 {
+            color: #0000CD;
+            font-size: 25px;
+            margin-top: 12px;
+            margin-bottom: 30px;
+        }
+
+        #okno input {
+            border-radius: 5px;
+            border: 1px #0000CD solid;
+            height: 25px;
+            margin-bottom: 15px;
+        }
+
+        #okno span {
+            color: #0000CD;
+            text-align: left;
+            font-weight: 600;
+            font-size: 21px;
+        }
+
+        #okno button {
+            height: 29px;
+            border-radius: 5px;
+            border: 1px #0000CD solid;
+            background-color: #0000CD;
+            margin-top: 10px;
+        }
+
+        #okno button a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 19px;
+        }
+
+        #okno hr {
+            width: 100%;
+            border-color: #fff;
+            margin: 13px 0px 26px 0;
+        }
+
+        #okno .registration-btn {
+            font-size: 18px;
         }
 
         #zatemnenie:target {
@@ -37,15 +90,18 @@
         }
 
         .close {
-            display: inline-block;
+            display: flex;
             border: 1px solid #0000cc;
             color: #0000cc;
             padding: 0 12px;
-            margin: 10px;
+            margin: 20px auto;
             text-decoration: none;
             background: #f2f2f2;
             font-size: 14pt;
             cursor: pointer;
+            width: 30%;
+            justify-content: center;
+
         }
 
         .close:hover {
@@ -124,6 +180,10 @@
             font-style: italic;
             top: 93vh;
         }
+
+        .input-login {
+            place-content: "123";
+        }
     </style>
 </head>
 
@@ -132,16 +192,17 @@
     <h2 class="page-title">ТЕХНОЛОГИИ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ</h2>
     <div id="zatemnenie">
         <div id="okno">
-            <h4>Вход</h4>
-            Логин
-            <input name="Login" type="text"/>
-            Пароль
+            <h4>Авторизация</h4>
+            <span>Логин</span>
+            <input name="Login" class="input-login" placeholder="12345678@study.bsuir.by" type="text"/>
+            <span>Пароль</span>
             <input name="Login" type="password"/>
             <button>
                 <a href="fdffffff">Войти</a>
             </button>
             <a href="#" class="close">Назад</a>
-            <a href="{% url 'registration' %}">Регистрация</a>
+            <hr>
+            <a class="registration-btn" href="{% url 'registration' %}">Регистрация</a>
         </div>
     </div>
 
