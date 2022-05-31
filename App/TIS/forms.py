@@ -1,6 +1,7 @@
 from django import forms
+from django.contrib.auth import password_validation
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.forms import AuthenticationForm
-
 from .models import *
 
 
@@ -13,7 +14,23 @@ class AddStudent(forms.ModelForm):
             'password': forms.PasswordInput(),
         }
 
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        password_validation.validate_password(password, self.instance)
+        return password
+
+    def save(self, commit=True):
+        user = super(AddStudent, self).save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user
+
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(label="Логин", max_length=150)
-    password = forms.CharField(label="Пароль", max_length=128, widget=forms.PasswordInput())
+    password = forms.CharField(
+        label=_("Password"),
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'}),
+    )

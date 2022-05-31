@@ -19,7 +19,7 @@
     <li>{{ chapter }}</li>
     <ul>
     {% for topic_obj in topics %}
-        <li><a href="{% url 'topic' topic_obj.id_topic %}">{{ topic_obj.topic_name }}</a></li>
+        <li><a href="{% url 'topic' topic_obj.id %}">{{ topic_obj.topic_name }}</a></li>
     {% endfor %}
     </ul>
 {% endfor %}

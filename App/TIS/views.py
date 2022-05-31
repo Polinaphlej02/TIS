@@ -16,10 +16,10 @@ def main_page(request, topic_id):
     topics = Topic.objects.all()
 
     theory_material_display = TheorMat.objects.filter(id_topic=topic_id)[0].theor_mat
-    topic_obj_display = Topic.objects.filter(id_topic=topic_id)[0]
+    topic_obj_display = Topic.objects.filter(id=topic_id)[0]
     topic_name_display = topic_obj_display.topic_name
-    chapter_id = topic_obj_display.id_chapter.id_chapter
-    chapter_name_display = Chapter.objects.filter(id_chapter=chapter_id)[0].chapter_name
+    chapter_id = topic_obj_display.id_chapter.id
+    chapter_name_display = Chapter.objects.filter(id=chapter_id)[0].chapter_name
 
     struct = {}
 
@@ -27,7 +27,7 @@ def main_page(request, topic_id):
         current_chapter = chapter_obj.chapter_name
         struct[current_chapter] = []
         for topic_obj in topics:
-            if topic_obj.id_chapter.id_chapter == chapter_obj.id_chapter:
+            if topic_obj.id_chapter.id == chapter_obj.id:
                 struct[current_chapter].append(topic_obj)
 
     context = {"title": "TIS",
