@@ -67,7 +67,6 @@
             background-color: #0000CD;
             margin-top: 15px;
             padding-bottom: 34px;
-}
         }
 
         #okno button a {
@@ -117,13 +116,13 @@
 
         .page-title {
             background-color: #0000CD;
-            margin-top: 50px;
             margin-bottom: 0;
             padding: 20px 0;
             color: #fff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding-left: 15px;
             font-size: 69px;
+            margin-top: 0;
         }
 
         body {
@@ -194,9 +193,6 @@
             place-content: "123";
         }
 
-
-
-
         .sign-in-btn {
             color: #fff;
             width: 300px;
@@ -213,8 +209,6 @@
             background-color: #fff !important;
         }
 
-
-
         .input__wrapper label {
             text-align: left;
             font-size: 22px;
@@ -225,10 +219,38 @@
             display: flex;
             flex-direction: column;
         }
+
+        header {
+            display: flex;
+            height: 60px;
+        }
+
+        header .logo__wrapper {
+            height: 100%;
+        }
+
+        header .logo__wrapper img {
+            height: 100%;
+        }
+
+        header .site-title {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            margin-left: 15px;
+        }
     </style>
 </head>
 
 <body>
+    <header>
+        <div class="logo__wrapper">
+            <img src="../../static/pictures/logo.jpg">
+        </div>
+        <div class="site-title">
+            <label>Белорусский государственный университет информатики и радиоэлектроники</label>
+        </div>
+    </header>
     <div id="authorization-page__wrapper">
     <h2 class="page-title">ТЕХНОЛОГИИ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ</h2>
     <div id="zatemnenie">

@@ -2,30 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>{{ title }}</title>
+    
+    <style>
+        body {
+            margin: 0;
+        }
+        header {
+            display: flex;
+            height: 60px;
+        }
+
+        header .logo__wrapper {
+            height: 100%;
+        }
+
+        header .logo__wrapper img {
+            height: 100%;
+        }
+
+        header .site-title {
+            display: flex;
+            align-items: center;
+            font-size: 30px;
+            margin-left: 15px;
+        }
+
+        .page-title {
+            background-color: #0000CD;
+            margin-bottom: 0;
+            padding: 20px 0;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            padding-left: 15px;
+            font-size: 69px;
+            margin-top: 0;
+        }
+
+        .topics-page__wrapper {
+            display: flex;
+        }
+
+        .topics-list {
+            border-right: 1px #c4c4c4 solid;
+            border-bottom: 1px #c4c4c4 solid;
+            width: 25%;
+            max-width: 300px;
+        }
+    </style>
 </head>
 <body>
 
-<li> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
 
-<h2>Название курса</h2>
+<header>
+        <div class="logo__wrapper">
+            <img src="../../static/pictures/logo.jpg">
+        </div>
+        <div class="site-title">
+            <label>Белорусский государственный университет информатики и радиоэлектроники</label>
+        </div>
+        <li> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
+</header>
+<h2 class="page-title">ТЕХНОЛОГИИ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ</h2>
+<div class="topics-page__wrapper">
+    <div class="topics-list">
+        <ul>
+            {% for chapter, topics in panel.items %}
+                <a data-toggle="collapse" href="#collapse1">{{ chapter }}</li>
+                <ul>
+                {% for topic_obj in topics %}
+                    <li><a href="{% url 'topic' topic_obj.id %}">{{ topic_obj.topic_name }}</a></li>
+                {% endfor %}
+                </ul>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="topic-content">
+        <h3>Глава {{ chapter_name }}</h3>
 
-<h3>Глава {{ chapter_name }}</h3>
+        <h4>Тема {{ topic_name }}</h4>
+        
+        <p>{{ theor_mat }}</p>
+    </div>
+</div>
 
-<h4>Тема {{ topic_name }}</h4>
 
-<p>{{ theor_mat }}</p>
 
-<ul>
-{% for chapter, topics in panel.items %}
-    <li>{{ chapter }}</li>
-    <ul>
-    {% for topic_obj in topics %}
-        <li><a href="{% url 'topic' topic_obj.id %}">{{ topic_obj.topic_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% endfor %}
-</ul>
+
 
 </body>
 </html>
