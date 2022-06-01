@@ -234,7 +234,7 @@
     <div id="zatemnenie">
         <div id="okno">
             <h4>Авторизация</h4>
-            <form method="post" action="{% url 'authorization' %}">
+            <form method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 {% for f in form %}
                 <div class="input__wrapper">

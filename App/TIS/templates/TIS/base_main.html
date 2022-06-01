@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<li> {{ user.username }} | <a href="{% url 'logout' %}">Выйти</a></li>
+
 <h2>Название курса</h2>
 
 <h3>Глава {{ chapter_name }}</h3>
