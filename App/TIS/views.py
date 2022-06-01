@@ -8,7 +8,7 @@ from .utils import DataMixin
 
 from .models import *
 from .forms import *
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 def main_page(request, topic_id):
@@ -42,12 +42,23 @@ def main_page(request, topic_id):
 class RegisterStudent(CreateView, DataMixin):
     form_class = AddStudent
     template_name = 'TIS/registration.html'
-    success_url = reverse_lazy("authorization")
+    success_url = "topics/1"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         c_def = self.get_user_context(title="Регистрация")
         return dict(list(context.items()) + list(c_def.items()))
+
+    def form_valid(self, form):
+        # save the new user first
+        form.save()
+        # get the username and password
+        username = self.request.POST['username']
+        password = self.request.POST['password']
+        # authenticate user then login
+        user = authenticate(username=username, password=password)
+        login(self.request, user)
+        return HttpResponseRedirect("/topics/1")
 
 
 class LoginUser(DataMixin, LoginView):
@@ -60,4 +71,4 @@ class LoginUser(DataMixin, LoginView):
         return dict(list(context.items()) + list(c_def.items()))
 
     def get_success_url(self):
-        return reverse_lazy("registration")
+        return reverse_lazy("topic", kwargs={"topic_id": 1})
