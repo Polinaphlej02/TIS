@@ -11,9 +11,12 @@
         body {
             margin: 0;
         }
+
         header {
             display: flex;
             height: 60px;
+            position: fixed;
+            top: 0;
         }
 
         header .logo__wrapper {
@@ -40,17 +43,47 @@
             padding-left: 15px;
             font-size: 69px;
             margin-top: 0;
+            position: fixed;
+            top: 60px;
+            width: 100vw;
         }
 
         .topics-page__wrapper {
             display: flex;
+            position: relative;
+            top: 252px;
         }
 
         .topics-list {
             border-right: 1px #c4c4c4 solid;
             border-bottom: 1px #c4c4c4 solid;
-            width: 25%;
+            width: 30%;
             max-width: 300px;
+            background: url("../../static/pictures/lola.jpg") no-repeat center center fixed;
+            background-size: cover;
+            flex-shrink: 0;
+            border-bottom-right-radius: 15px;
+            height: calc(100vh - 260px);
+        }
+
+        .topics-list ul a{
+            color: BLACK;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: 600;
+        }
+
+        .topic-content {
+            width: calc(100vw - 300px);
+            position: relative;
+            height: calc(100vh - 260px);
+            overflow-y: auto;
+        }
+
+        @media screen and (min-width: 1736px) {
+            .topics-list,
+            .topics-page__wrapper {
+                top: 176;
+            }
         }
     </style>
 </head>
@@ -71,8 +104,8 @@
     <div class="topics-list">
         <ul>
             {% for chapter, topics in panel.items %}
-                <a data-toggle="collapse" href="#collapse1">{{ chapter }}</li>
-                <ul>
+                <a data-toggle="collapse" href="#collapse{{ forloop.counter }}">{{ chapter }}</li>
+                <ul id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
                 {% for topic_obj in topics %}
                     <li><a href="{% url 'topic' topic_obj.id %}">{{ topic_obj.topic_name }}</a></li>
                 {% endfor %}
