@@ -44,4 +44,4 @@ class AnswerStudent(models.Model):
 
 class TheorMat(models.Model):
     id_topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    theor_mat = models.CharField(max_length=200)
+    theor_mat = models.CharField(max_length=60000)
