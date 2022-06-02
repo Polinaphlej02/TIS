@@ -1,0 +1,7 @@
+{% extends 'TIS/base_main.html' %}
+
+{% block content %}
+    {% autoescape off %}
+        <p class="content-text">{{ theor_mat|linebreaks }}</p>
+    {% endautoescape %}
+{% endblock %}

@@ -5,21 +5,17 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .utils import DataMixin
+from django.contrib.auth.decorators import login_required
+
 
 from .models import *
 from .forms import *
 from django.http import HttpResponse, HttpResponseRedirect
 
 
-def main_page(request, topic_id):
+def create_panel_struct():
     chapters = Chapter.objects.all()
     topics = Topic.objects.all()
-
-    theory_material_display = TheorMat.objects.filter(id_topic=topic_id)[0].theor_mat
-    topic_obj_display = Topic.objects.filter(id=topic_id)[0]
-    topic_name_display = topic_obj_display.topic_name
-    chapter_id = topic_obj_display.id_chapter.id
-    chapter_name_display = Chapter.objects.filter(id=chapter_id)[0].chapter_name
 
     struct = {}
 
@@ -30,13 +26,45 @@ def main_page(request, topic_id):
             if topic_obj.id_chapter.id == chapter_obj.id:
                 struct[current_chapter].append(topic_obj)
 
+    return struct
+
+
+@login_required(login_url='/login')
+def topic(request, topic_id):
+    theory_material_display = TheorMat.objects.filter(id_topic=topic_id)[0].theor_mat
+    topic_obj_display = Topic.objects.filter(id=topic_id)[0]
+    topic_name_display = topic_obj_display.topic_name
+    chapter_id = topic_obj_display.id_chapter.id
+    chapter_name_display = Chapter.objects.filter(id=chapter_id)[0].chapter_name
+
+    struct = create_panel_struct()
+
     context = {"title": "TIS",
                "panel": struct,
                "theor_mat": theory_material_display,
                "chapter_name": chapter_name_display,
                "topic_name": topic_name_display}
 
-    return render(request, template_name='TIS/base_main.html', context=context)
+    return render(request, template_name='TIS/topic.html', context=context)
+
+
+@login_required(login_url='/login')
+def questions(request, topic_id):
+    topic_obj_display = Topic.objects.filter(id=topic_id)[0]
+    topic_name_display = topic_obj_display.topic_name
+    chapter_id = topic_obj_display.id_chapter.id
+    chapter_name_display = Chapter.objects.filter(id=chapter_id)[0].chapter_name
+
+    questions = Question.objects.filter(id_topic=topic_id)
+    struct = create_panel_struct()
+
+    context = {"title": "TIS",
+               "panel": struct,
+               "questions": questions,
+               "chapter_name": chapter_name_display,
+               "topic_name": topic_name_display}
+
+    return render(request, template_name='TIS/questions.html', context=context)
 
 
 class RegisterStudent(CreateView, DataMixin):

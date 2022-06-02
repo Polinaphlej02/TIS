@@ -5,5 +5,6 @@ urlpatterns = [
     path('login/', LoginUser.as_view(), name='login'),
     path('logout/', logout_user, name='logout'),
     path('registration/', RegisterStudent.as_view(), name='registration'),
-    path('topics/<int:topic_id>', main_page, name="topic"),
+    path('topics/<int:topic_id>', topic, name='topic'),
+    path('topics/<int:topic_id>/questions', questions, name='questions'),
 ]

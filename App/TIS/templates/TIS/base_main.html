@@ -16,7 +16,7 @@
         <div class="site-title">
             <label>Белорусский государственный университет информатики и радиоэлектроники</label>
         </div>
-        <div class="account-info"> {{ user.username }} | <button id="log-out-btn">Выйти</button></div>
+        <div class="account-info"> {{ user.first_name }} | <button id="log-out-btn">Выйти</button></div>
 </header>
 <h2 class="page-title">ТЕХНОЛОГИИ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ</h2>
 <div class="topics-page__wrapper">
@@ -27,6 +27,7 @@
                 <ul id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
                 {% for topic_obj in topics %}
                     <li class="topic-name-li"><a href="{% url 'topic' topic_obj.id %}" class="topic-name">{{ topic_obj.topic_name }}</a></li>
+                    <li class="topic-name-li"><a href="{% url 'questions' topic_obj.id %}" class="topic-name">Вопросы к теме "{{ topic_obj.topic_name }}"</a></li>
                 {% endfor %}
                 </ul>
             {% endfor %}
@@ -36,8 +37,8 @@
         <h3 class="chapter-title">Раздел «{{ chapter_name }}»</h3>
 
         <h4 class="topic-title">Тема «{{ topic_name }}»</h4>
-        
-        <p class="content-text">{{ theor_mat }}</p>
+        {% block content %}
+        {% endblock %}
         <img class="just-because" src="../../static/pictures/picture-one-direction.jpg">
     </div>
 </div>

@@ -1,0 +1,9 @@
+{% extends 'TIS/base_main.html' %}
+
+{% block content %}
+    {% autoescape off %}
+            {% for q in questions %}
+                <p class="content-text">{{ forloop.counter }}. {{ q.question }}</p>
+            {% endfor %}
+    {% endautoescape %}
+{% endblock %}
