@@ -7,4 +7,5 @@ urlpatterns = [
     path('registration/', RegisterStudent.as_view(), name='registration'),
     path('topics/<int:topic_id>', topic, name='topic'),
     path('topics/<int:topic_id>/questions', questions, name='questions'),
+    path('maintest/', test, name='test')
 ]

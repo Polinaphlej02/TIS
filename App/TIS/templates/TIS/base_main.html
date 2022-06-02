@@ -31,12 +31,10 @@
                 {% endfor %}
                 </ul>
             {% endfor %}
+            <li class="topic-name-li"><a href="{% url 'test' %}" class="topic-name">Итоговый тест</a></li>
         </ul>
     </div>
     <div class="topic-content">
-        <h3 class="chapter-title">Раздел «{{ chapter_name }}»</h3>
-
-        <h4 class="topic-title">Тема «{{ topic_name }}»</h4>
         {% block content %}
         {% endblock %}
         <img class="just-because" src="../../static/pictures/picture-one-direction.jpg">

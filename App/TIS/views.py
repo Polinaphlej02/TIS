@@ -105,3 +105,12 @@ class LoginUser(DataMixin, LoginView):
 def logout_user(request):
     logout(request)
     return redirect('login')
+
+
+def test(request):
+    struct = create_panel_struct()
+
+    context = {"title": "TIS",
+               "panel": struct}
+
+    return render(request, template_name='TIS/test.html', context=context)
