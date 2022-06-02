@@ -258,7 +258,7 @@
         flex-direction: column;
         margin: 20vh auto;
         border-radius: 15px;
-        height: 427px;
+        height: 460px;
 
         background: url("../../pictures/suda.jpg") no-repeat center center;
         background-size: auto;
@@ -290,7 +290,6 @@
     form label {
         font-size: 20px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
     }
 
     form button {
@@ -339,6 +338,20 @@
         flex-direction: column;
         margin-bottom: 20px;
     }
+
+    .cancel-reg {
+        display: flex;
+        border: 1px solid #08088F;
+        color: #08088F;
+        margin: 0 auto 20px;
+        text-decoration: none;
+        background: #f2f2f2;
+        font-size: 14pt;
+        cursor: pointer;
+        width: 71px;
+        justify-content: center;
+        border-radius: 5px;
+    }
 }
 
 //Topics page
@@ -364,19 +377,22 @@
     }
 
     header .site-title {
-        display: flex;
         align-items: center;
-        font-size: 30px;
-        margin-left: 15px;
+        font-size: 15px;
+        margin-left: 10px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        color: #050544;
+        font-weight: 600;
+        margin-top: 6px;
     }
 
     .page-title {
-        background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
+        background-image: linear-gradient(-20deg, #001bf9 0%, #000 100%);
         margin-bottom: 0;
         padding: 20px 0;
         color: #fff;
         padding-left: 15px;
-        font-size: 69px;
+        font-size: 60px;
         margin-top: 0;
         position: fixed;
         top: 60px;
@@ -388,7 +404,15 @@
     .topics-page__wrapper {
         display: flex;
         position: relative;
-        top: 252px;
+        top: 232px;
+
+        @media screen and (min-width: 1767px) {
+            top: 166px;
+        }
+        
+        @media screen and (max-width: 1199px) {
+            top: 298px;            
+        }
     }
 
     .topics-list {
@@ -403,32 +427,88 @@
         border-bottom-right-radius: 15px;
         height: calc(100vh - 260px);
         padding-top: 20px;
+
+        @media screen and (min-width: 1767px) {
+            height: calc(100vh - 170px);
+        }
+        
+        @media screen and (max-width: 1199px) {
+            height: calc(100vh - 305px);          
+        }
     }
 
-    .topics-list ul {
-        padding: 10px;
+    .topics-list ol {
+        padding: 10px 15px 10px 30px;
+        height: 97%;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        margin-right: 13px;
     }
 
-    .topics-list ul a {
+    .topics-list ol a {
         color: #fff;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-weight: 600;
     }
 
     .topic-content {
         width: calc(100vw - 300px);
         position: relative;
-        height: calc(100vh - 260px);
         overflow-y: auto;
         padding-left: 25px;
         padding-right: 25px;
     }
 
-    .chapter-name {
-        display: flex;
+    li .chapter-name,
+    li .chapter-test {
+        display: inline;
         margin-bottom: 10px;
         font-size: 20px;
         line-height: 20px;
+        color: #fff;
+    }
+
+    .list::marker {
+        font-size: 18px;
+        line-height: 18px;
+        color: #fff;
+    }
+
+    .list {
+        margin-bottom: 10px;
+    }
+
+    .list::before {
+        font-size: 18px;
+        line-height: 18px;
+        color: #fff;
+    }
+
+    .topic-name-li::before {
+        font-size: 14px;
+        line-height: 14px;
+        color: #fff;
+    }
+
+    .skip::marker {
+        display: none;
+    }
+
+    ol {
+        counter-reset:yourCounter;
+    }
+    ol li:not(.skip) {
+        counter-increment:yourCounter;
+        list-style:none;
+    }
+    ol li:not(.skip):before {
+        content:counter(yourCounter) ".";
+    }
+    ol li.skip{
+        margin-left: 20px;
+    }
+    .skip::marker {
+        color: transparent;
     }
 
     .chapter-name,
@@ -463,38 +543,53 @@
         margin-top: 8px;
     }
 
-    @media screen and (min-width: 1736px) {
-
-        .topics-list,
-        .topics-page__wrapper {
-            top: 176px;
-        }
-
-        .topics-list {
-            height: calc(100vh - 176px);
-        }
-    }
-
     .account-info {
         margin-left: auto;
         margin-right: 20px;
         display: flex;
         align-items: center;
+        
+        button {
+            background-image: linear-gradient(-20deg, #000 0%,#001bf9 100%);
+            border-radius: 8px;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-left: 4px;
+            font-weight: 600;
+            padding: 3px;
+            padding-top: 2px;
+
+            &:hover {
+                cursor: pointer;
+                color: #FFF;
+                background-color: #fff;
+                background-image: linear-gradient(-20deg, #43a6e2 0%, #230c75 100%);
+            }
+        }
+
+        .user-name {
+            font-size: 17px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: 600;
+            color: #050544;
+        }
     }
 
-    .account-info a {
-        margin-left: 5px;
-        color: #0000CD;
-        font-weight: 600;
-        font-size: 16px;
-    }
-
+    .test-title,
     .chapter-title {
         font-size: 36px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-weight: 600;
+        color: #050544;
     }
 
     .topic-title {
         font-size: 28px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        margin-left: 58px;
+        font-weight: 600;
+        color: #050544;
+        margin-top: 25px;
     }
 
     .content-text {
@@ -510,26 +605,41 @@
     .confirm-log-out__wrapper {
         display: none;
         position: fixed;
-        top: 25vh;
+        top: calc(50vh - 115px);
         left: calc(50vw - 175px);
-        background: #fff;
         width: 350px;
-        height: 100px;
+        height: 150px;
         border-radius: 15px;
+        border-color: #140077;
+        border: 2px solid;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
+        flex-direction: column;
+        background-image: linear-gradient(-20deg, #001cff 0%, #fff 100%);
 
         .qqq {
             display: flex;
             flex-direction: row;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            height: 35px;
         }
 
         .cancel-log-out {
             width: 45%;
             margin-left: 5px;
+            border-radius: 8px;
+            color: #000;
+            border-color: #170088e3;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            height: 100%;
+            padding: 0px 25px 2px;
+            font-weight: 600;
         }
 
         .confirm-log-out-btn {
             height: 30px;
-            background-color: #00008B;
+            background-color: #170088e3;
             color: #fff;
             text-decoration: none;
             height: 30px;
@@ -537,18 +647,137 @@
             width: 45%;
             margin-left: 15px;
             border-radius: 8px;
-            padding: 0 10px;
+            padding: 8px 46px;
             line-height: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            height: 100%;
+            font-weight: 600;
+            border: 2px solid;
+            border-color: #170088e3;
+            
 
             &:hover {
                 text-decoration: none;
+                cursor: pointer;
+                color: #050544;
+                background-color: #fff;
             }
         }
 
         .confirm-msg {
             display: flex;
             justify-content: center;
-            font-size: 24px;
+            font-size: 28px;
+            text-align: center;
+            margin-top: 15px;
+            color: #140077;
+            line-height: 28px;
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
+    }
+
+    .test-quest,
+    .theor-one {
+        color: #050544; 
+        font-family: Roboto,sans-serif;
+        font-size: 18px;
+        margin-left: 58px;
+        margin-top: -10px;
+        text-align: justify;
+        
+    }
+
+    .test-quest:first-of-type {
+        margin-top: 20px;
+    }
+
+    .two {
+        margin-top: 5px;
+        margin-top: 5px;
+        text-indent: 58px;
+        margin-left: 0;
+    }
+
+    .three {
+        margin-top: 5px;
+    }
+    
+    #zatemnenie {
+        background: rgba(102, 102, 102, 0.5);
+        width: 100%;
+        height: 104vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+    }
+
+    .topic-content,
+    .topics-list {
+        height: calc(100vh - 240px);
+        @media screen and (min-width: 1767px) {
+            height: calc(100vh - 170px);
+        }
+        
+        @media screen and (max-width: 1199px) {
+            height: calc(100vh - 305px);          
+        }
+    }
+
+    
+}
+
+//TEST PAGE
+.test-page {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 100px auto;
+
+    .test-title {
+        font-size: 53px;
+    }
+
+    .test-btns {
+        display: flex;
+        flex-direction: row;
+        height: 40px;
+
+        button {
+            background-image: linear-gradient(-20deg, #000 0%,#001bf9 100%);
+            border-radius: 8px;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin-left: 4px;
+            font-weight: 600;
+            padding: 3px;
+            padding-top: 2px;
+            height: 100%;
+            width: 135px;
+            font-size: 18px;
+            margin: 10px auto;
+
+            &:hover {
+                cursor: pointer;
+                color: #FFF;
+                background-color: #fff;
+                background-image: linear-gradient(-20deg, #43a6e2 0%, #230c75 100%);
+            }
+        }
+
+        .start-test-btn {
+            margin-left: 50px;
+        }
+
+        .rating-btn {
+            margin-right: 50px;
+        }
+    }
+
+    .test-title {
+        justify-content: center;
+        display: flex;
     }
 }
