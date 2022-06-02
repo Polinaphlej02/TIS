@@ -2,9 +2,12 @@
 
 {% block content %}
     {% autoescape off %}
-        <h1>Итоговый тест</h1>
-        <button class="sign-in-btn" type="submit">Начать тест</button>
-        <br><br><br>
-        <button class="sign-in-btn" type="submit">Мой рейтинг</button>
+    <div class="test-page">
+        <h1 class="test-title">Итоговый тест</h1>
+        <div class="test-btns">
+            <button class="start-test-btn" type="submit">Начать тест</button>
+            <button class="rating-btn" type="submit">Мой рейтинг</button>
+        </div>
+    </div>
     {% endautoescape %}
 {% endblock %}

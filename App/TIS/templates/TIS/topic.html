@@ -1,10 +1,12 @@
 {% extends 'TIS/base_main.html' %}
 
 {% block content %}
-    <h3 class="chapter-title">Раздел «{{ chapter_name }}»</h3>
+    <h3 class="chapter-title">Раздел 1 «{{ chapter_name }}»</h3>
 
-    <h4 class="topic-title">Тема «{{ topic_name }}»</h4>
+    <h4 class="topic-title">Тема 1 «{{ topic_name }}»</h4>
     {% autoescape off %}
-        <p class="content-text">{{ theor_mat|linebreaks }}</p>
+        <p class="content-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ theor_mat|linebreaks }}</p>
     {% endautoescape %}
+    
+    <img class="just-because" src="../../static/pictures/picture-one-direction.jpg">
 {% endblock %}

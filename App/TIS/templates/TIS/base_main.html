@@ -19,36 +19,39 @@
         <div class="site-title">
             <label>Белорусский государственный университет<br> информатики и радиоэлектроники</label>
         </div>
-        <div class="account-info"> {{ user.first_name }} | <button id="log-out-btn">Выйти</button></div>
+        <div class="account-info"> <span class="user-name">{{ user.first_name }} | </span><button id="log-out-btn">Выйти</button></div>
 </header>
 <h2 class="page-title">ТЕХНОЛОГИИ ИНФОРМАЦИОННОЙ БЕЗОПАСНОСТИ</h2>
 <div class="topics-page__wrapper">
     <div class="topics-list">
-        <ul>
+        <ol>
             {% for chapter, topics in panel.items %}
+            <li class="list">
                 <a data-toggle="collapse" href="#collapse{{ forloop.counter }}" class="chapter-name">{{ chapter }}</a>
-                <ul id="collapse{{ forloop.counter }}" class="panel-collapse collapse in">
+                <ol id="collapse{{ forloop.counter }}" class="panel-collapse collapse in sublist">
                 {% for topic_obj in topics %}
                     <li class="topic-name-li"><a href="{% url 'topic' topic_obj.id %}" class="topic-name">{{ topic_obj.topic_name }}</a></li>
-                    <li class="topic-name-li"><a href="{% url 'questions' topic_obj.id %}" class="topic-name">Вопросы к теме "{{ topic_obj.topic_name }}"</a></li>
+                    <li class="topic-name-li skip"><a href="{% url 'questions' topic_obj.id %}" class="topic-name">Вопросы к теме "{{ topic_obj.topic_name }}"</a></li>
                 {% endfor %}
-                </ul>
+                </ol>
+            </li>
             {% endfor %}
-            <li class="topic-name-li"><a href="{% url 'test' %}" class="topic-name">Итоговый тест</a></li>
-        </ul>
+            <li class="list"><a href="{% url 'test' %}" class="chapter-test">Итоговый тест</a></li>
+        </ol>
     </div>
     <div class="topic-content">
         {% block content %}
         {% endblock %}
-        <img class="just-because" src="../../static/pictures/picture-one-direction.jpg">
     </div>
 </div>
 
-<div class="confirm-log-out__wrapper">
-    <p class="confirm-msg">Прям вот точно выйти?</p>
-    <div class="qqq">
-        <a class="confirm-log-out-btn" href="{% url 'logout' %}">Вийди отсюда, розбійник!</a>
-        <button class="cancel-log-out">Назад его!</button>
+<div id="zatemnenie">
+    <div class="confirm-log-out__wrapper">
+        <p class="confirm-msg">Вы уверены, что хотите выйти?</p>
+        <div class="qqq">
+            <a class="confirm-log-out-btn" href="{% url 'logout' %}">Выйти</a>
+            <button class="cancel-log-out">Назад</button>
+        </div>
     </div>
 </div>
 </body>
