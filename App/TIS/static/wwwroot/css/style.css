@@ -1,6 +1,6 @@
 .authorization-page {
   height: 100vh;
-  background: url("../../pictures/background.jpg") no-repeat center center fixed;
+  background: url("../../pictures/fox.jpg");
   -webkit-background-size: auto auto;
           background-size: auto;
   -webkit-background-size: cover;
@@ -23,10 +23,10 @@
   height: 397px;
   text-align: center;
   padding: 15px;
-  border: 2px solid #0000CD;
+  border: 2px solid #08088F;
   -webkit-border-radius: 10px;
           border-radius: 10px;
-  color: #0000CD;
+  color: #08088F;
   position: absolute;
   top: 0;
   right: 0;
@@ -54,7 +54,7 @@
 }
 
 .authorization-page #okno h4 {
-  color: #00008B;
+  color: #08088F;
   font-size: 25px;
   margin-top: 12px;
   margin-bottom: 30px;
@@ -79,8 +79,8 @@
   height: 31px;
   -webkit-border-radius: 5px;
           border-radius: 5px;
-  border: 1px #0000CD solid;
-  background-color: #0000CD;
+  border: 1px #08088F solid;
+  background-color: #08088F;
   margin-top: 15px;
   padding-bottom: 34px;
 }
@@ -100,6 +100,7 @@
 
 .authorization-page #okno .registration-btn {
   font-size: 18px;
+  color: #08088F;
 }
 
 .authorization-page #okno .registration-btn:hover {
@@ -116,8 +117,8 @@
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  border: 1px solid #0000CD;
-  color: #0000CD;
+  border: 1px solid #08088F;
+  color: #08088F;
   margin: 20px auto;
   text-decoration: none;
   background: #f2f2f2;
@@ -137,11 +138,13 @@
 }
 
 .authorization-page .page-title {
-  background-color: #0000CD;
+  background-image: -webkit-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: -o-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
   margin-bottom: 0;
   padding: 20px 0;
   color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Montserrat', sans-serif;
   padding-left: 15px;
   font-size: 69px;
   margin-top: 0;
@@ -160,7 +163,9 @@
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  background-color: #0000CD;
+  background-image: -webkit-linear-gradient(110deg, #000 0%, #001aed 100%);
+  background-image: -o-linear-gradient(110deg, #000 0%, #001aed 100%);
+  background-image: linear-gradient(-20deg, #000 0%, #001aed 100%);
   color: #fff;
   height: 70px;
   width: 140px;
@@ -178,13 +183,16 @@
 
 .authorization-page .log-in-button:hover {
   cursor: pointer;
-  color: #0000CD;
+  color: #FFF;
   background-color: #fff;
+  background-image: -webkit-linear-gradient(110deg, #43a6e2 0%, #230c75 100%);
+  background-image: -o-linear-gradient(110deg, #43a6e2 0%, #230c75 100%);
+  background-image: linear-gradient(-20deg, #43a6e2 0%, #230c75 100%);
 }
 
 .authorization-page .subtitle {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: 400;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
   font-size: 23px;
   display: -webkit-box;
   display: -webkit-flex;
@@ -194,6 +202,7 @@
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  text-shadow: 1px 1px 2px #fdfdfd, 0 0 1em #a0a0dc, 0 0 0.2em #b3b3ff;
 }
 
 .authorization-page #authorization-page__wrapper {
@@ -225,6 +234,7 @@
   font-weight: 400;
   font-style: italic;
   top: 93vh;
+  text-shadow: 1px 1px 2px #fdfdfd, 0 0 1em #a0a0dc, 0 0 0.2em #b3b3ff;
 }
 
 .authorization-page .input-login {
@@ -242,7 +252,7 @@
 
 .authorization-page .sign-in-btn:hover {
   cursor: pointer;
-  color: #0000CD;
+  color: #08088F;
   background-color: #fff !important;
 }
 
@@ -289,8 +299,11 @@
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 30px;
-  margin-left: 15px;
+  font-size: 16px;
+  margin-left: 10px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #fff;
+  font-weight: 600;
 }
 
 .registration-page {
@@ -323,7 +336,7 @@
   -webkit-border-radius: 15px;
           border-radius: 15px;
   height: 427px;
-  background: url("../../static/pictures/suda.jpg") no-repeat center center;
+  background: url("../../pictures/suda.jpg") no-repeat center center;
   -webkit-background-size: auto auto;
           background-size: auto;
   -webkit-background-size: cover;
@@ -475,17 +488,20 @@
 }
 
 .base-main-page .page-title {
-  background-color: #0000CD;
+  background-image: -webkit-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: -o-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
   margin-bottom: 0;
   padding: 20px 0;
   color: #fff;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   padding-left: 15px;
   font-size: 69px;
   margin-top: 0;
   position: fixed;
   top: 60px;
   width: 100vw;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .base-main-page .topics-page__wrapper {
@@ -502,7 +518,9 @@
   border-bottom: 1px #c4c4c4 solid;
   width: 30%;
   max-width: 300px;
-  background: #0000CD;
+  background: -webkit-linear-gradient(110deg, #001bf9 0%, #000 100%);
+  background: -o-linear-gradient(110deg, #001bf9 0%, #000 100%);
+  background: linear-gradient(-20deg, #001bf9 0%, #000 100%);
   -webkit-background-size: cover;
           background-size: cover;
   -webkit-flex-shrink: 0;
