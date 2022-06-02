@@ -488,19 +488,20 @@
 }
 
 .base-main-page .page-title {
-  background-image: -webkit-linear-gradient(110deg, #001bf9 0%, #000 100%);
-  background-image: -o-linear-gradient(110deg, #001bf9 0%, #000 100%);
-  background-image: linear-gradient(-20deg, #001bf9 0%, #000 100%);
+  background-image: -webkit-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: -o-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
   margin-bottom: 0;
   padding: 20px 0;
   color: #fff;
   padding-left: 15px;
-  font-size: 58px;
+  font-size: 69px;
   margin-top: 0;
   position: fixed;
   top: 60px;
   width: 100vw;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
 }
 
 .base-main-page .topics-page__wrapper {
