@@ -26,9 +26,9 @@
     <div class="topics-list">
         <ol>
             {% for chapter, topics in panel.items %}
-            <li class="list">
-                <a data-toggle="collapse" href="#collapse{{ forloop.counter }}" class="chapter-name">{{ chapter }}</a>
-                <ol id="collapse{{ forloop.counter }}" class="panel-collapse collapse in sublist">
+            <li class="list list-{{ forloop.counter }}">
+                <a data-toggle="collapse" href="#collapse{{ forloop.counter }}" class="chapter-name chapter-name-{{ forloop.counter }} collapsed" aria-expanded="false">{{ chapter }}</a>
+                <ol id="collapse{{ forloop.counter }}" class="panel-collapse collapse sublist" aria-expanded="false"> 
                 {% for topic_obj in topics %}
                     <li class="topic-name-li"><a href="{% url 'topic' topic_obj.id %}" class="topic-name">{{ topic_obj.topic_name }}</a></li>
                     <li class="topic-name-li skip"><a href="{% url 'questions' topic_obj.id %}" class="topic-name">Вопросы к теме "{{ topic_obj.topic_name }}"</a></li>
