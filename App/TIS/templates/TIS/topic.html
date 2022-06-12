@@ -1,9 +1,16 @@
 {% extends 'TIS/base_main.html' %}
 
 {% block content %}
-    <h3 class="chapter-title">Раздел 1 «{{ chapter_name }}»</h3>
+    <div class="title-block">
+        <label class="chapter-number">Раздел&nbsp;1&nbsp;</label>
+        <label class="chapter-title">«{{ chapter_name }}»</label>
+    </div>
 
-    <h4 class="topic-title">Тема 1 «{{ topic_name }}»</h4>
+    <div class="topic-title-block">
+        <label class="chapter-number">Тема&nbsp;1&nbsp;</label>
+        <label class="chapter-title">«{{ topic_name }}»</label>
+    </div>
+
     {% autoescape off %}
         <p class="content-text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ theor_mat|linebreaks }}</p>
     {% endautoescape %}
