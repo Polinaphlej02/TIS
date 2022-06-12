@@ -351,6 +351,13 @@
         width: 71px;
         justify-content: center;
         border-radius: 5px;
+        padding: 0;
+
+        a {
+            text-decoration: none;
+            padding: 0px 10px;
+            line-height: 28px;
+        }
     }
 }
 
@@ -442,6 +449,7 @@
         height: 97%;
         overflow-y: auto;
         scrollbar-width: thin;
+        scrollbar-color: #001bf9 #fff;
         margin-right: 13px;
     }
 
@@ -527,12 +535,13 @@
         margin-bottom: 10px;
     }
 
-    .chapter-name::after {
+    .chapter-name::after,
+    .chapter-name.collapsed::after {
         display: inline-block;
         content: '';
-        transform: rotate(180deg);
+        transform: rotate(0);
         transform-origin: center;
-        transition: 0.2s transform ease;
+        transition: 0.35s transform ease;
         width: 0;
         height: 0;
         border: 5px solid transparent;
@@ -541,6 +550,14 @@
         margin-left: 10px;
         margin-bottom: 2px;
         margin-top: 8px;
+    }
+
+    .chapter-name.collapsed::after {
+        transform: rotate(180deg);
+    }
+
+    .sublist {
+        overflow-y: hidden !important;
     }
 
     .account-info {
@@ -687,6 +704,9 @@
         margin-top: -10px;
         text-align: justify;
         
+        span {
+            display: inline-block;
+        }
     }
 
     .test-quest:first-of-type {
@@ -695,13 +715,29 @@
 
     .two {
         margin-top: 5px;
-        margin-top: 5px;
         text-indent: 58px;
         margin-left: 0;
+
+        span {
+            display: inline-block;
+        }
     }
 
     .three {
         margin-top: 5px;
+    }
+
+    .a1 {
+        margin-top: 5px;
+        text-indent: 58px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+    .a2 {
+        margin-top: 0px;
+        text-indent: 58px;
+        margin-left: 0;
     }
     
     #zatemnenie {
@@ -726,7 +762,17 @@
         }
     }
 
-    
+    .picture {
+        display: flex;
+        margin: auto;
+    }
+
+    .picture-text {
+        text-align: center;
+        color: #050544;
+        font-family: Roboto,sans-serif;
+        font-size: 18px;
+    }
 }
 
 //TEST PAGE
@@ -780,4 +826,16 @@
         justify-content: center;
         display: flex;
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: #fff;
+    border-radius: 9em;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #001bf9;
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
 }
