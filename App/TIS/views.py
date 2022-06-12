@@ -107,10 +107,39 @@ def logout_user(request):
     return redirect('login')
 
 
-def test(request):
+@login_required(login_url='/login')
+def test_entry(request):
     struct = create_panel_struct()
 
     context = {"title": "TIS",
                "panel": struct}
 
     return render(request, template_name='TIS/test.html', context=context)
+
+
+@login_required(login_url='/login')
+def test(request, question_id):
+    question_test = QuestionMini.objects.filter(id=question_id)[0]
+    questions_num = len(QuestionMini.objects.all())
+    next_question_id, prev_question_id = question_id + 1, question_id - 1
+    struct = create_panel_struct()
+    if request.method == "POST":
+        form = StudentAnswerForm(request.POST)
+        print(form.fields)
+        if form.is_valid():
+            try:
+                form.save()
+            except:
+                form.add_error(None, "Ошибка добавления ответа")
+    else:
+        form = StudentAnswerForm()
+
+    context = {"title": "TIS",
+               "panel": struct,
+               "question": question_test,
+               "questions_num": questions_num,
+               "next_question_id": next_question_id,
+               "prev_question_id": prev_question_id,
+               "answer_form": form}
+
+    return render(request, template_name='TIS/test_questions.html', context=context)

@@ -1,0 +1,21 @@
+{% extends 'TIS/base_main.html' %}
+
+{% block content %}
+    {% autoescape off %}
+        <p>{{ question.question }}</p>
+        <form method="post" action="{% url 'test' question.id %}">
+            {% csrf_token %}
+            {{ answer_form.ans_stud }}
+            <button type="submit">Ответить</button>
+            <br><br>
+        </form>
+        {% if question.id != 1 %}
+            <a href="{% url 'test' prev_question_id %}"><button>Вопрос {{ prev_question_id }}</button></a>
+        {% endif %}
+        {% if next_question_id <= questions_num %}
+            <a href="{% url 'test' next_question_id %}"><button>Вопрос {{ next_question_id }}</button></a>
+        {% else %}
+            <a href="{% url 'test_entry' %}"><button>Завершить тест</button></a>
+        {% endif %}
+    {% endautoescape %}
+{% endblock %}

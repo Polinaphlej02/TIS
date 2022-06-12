@@ -32,14 +32,18 @@ class Question(models.Model):
     id_topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
 
 
+class QuestionMini(models.Model):
+    question = models.CharField(max_length=200)
+
+
 class Answer(models.Model):
     answer = models.CharField(max_length=200)
-    id_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    id_question = models.ForeignKey(QuestionMini, on_delete=models.CASCADE)
 
 
 class AnswerStudent(models.Model):
     ans_stud = models.CharField(max_length=200)
-    id_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    id_question = models.ForeignKey(QuestionMini, on_delete=models.CASCADE)
     id_student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
 

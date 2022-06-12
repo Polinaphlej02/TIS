@@ -34,3 +34,9 @@ class LoginForm(AuthenticationForm):
         strip=False,
         widget=forms.PasswordInput(attrs={'autocomplete': 'current-password'}),
     )
+
+
+class StudentAnswerForm(forms.ModelForm):
+    class Meta:
+        model = AnswerStudent
+        fields = "__all__"
