@@ -1,20 +1,23 @@
-from django.contrib.auth import authenticate, login, get_user_model, logout
-from django.contrib.auth.forms import AuthenticationForm
+from .forms import *
+from .models import *
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.views import LoginView
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .utils import DataMixin
 from django.contrib.auth.decorators import login_required
-
-
-from .models import *
-from .forms import *
-from django.http import HttpResponse, HttpResponseRedirect
+from django.template.defaulttags import register
+from django.http import HttpResponseRedirect
 
 
 TOPICS_ID_MAP = {1: 1, 2: 2, 3: 1, 4: 2,
                  5: 3, 6: 1, 7: 2, 8: 3}
+
+
+@register.filter
+def get_range(value):
+    return range(1, value + 1)
 
 
 def create_panel_struct():
@@ -145,6 +148,8 @@ def test(request, question_id):
         if form.is_valid():
             try:
                 form.save()
+                if question_id != questions_num:
+                    return redirect(f"/test/{question_id + 1}")
                 return redirect(f"/test/{question_id}")
             except:
                 form.add_error(None, "Ошибка добавления ответа")

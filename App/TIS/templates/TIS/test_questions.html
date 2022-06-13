@@ -2,18 +2,21 @@
 
 {% block content %}
     {% autoescape off %}
+        <h3>Вопрос {{ question.id }}</h3>
         <p>{{ question.question }}</p>
         <form method="post" action="{% url 'test' question.id %}">
             {% csrf_token %}
             <div>
                 {% for answer in answers %}
-                    <input type="radio" name="ans_stud" id="answer-{{ forloop.counter }}" value="{{ answer.answer }}"></input>
+                    <input type="radio" name="ans_stud" id="answer-{{ forloop.counter }}" value="{{ answer.answer }}">
                     <label for="answer-{{ forloop.counter }}">{{ answer.answer }}</label>
                     <br>
                 {% endfor %}
             </div>
             {% if user_answered == False %}
                 <button type="submit">Ответить</button>
+            {% else %}
+                <button type="submit" disabled style="background: rebeccapurple">Ответить</button>
             {% endif %}
             <br><br>
         </form>
@@ -25,5 +28,9 @@
         {% else %}
             <a href="{% url 'test_entry' %}"><button>Завершить тест</button></a>
         {% endif %}
+        <br><br>
+        {% for i in questions_num|get_range %}
+            <a href="{% url 'test' i %}">{{ forloop.counter }}</a>
+        {% endfor %}
     {% endautoescape %}
 {% endblock %}
