@@ -3,7 +3,7 @@
 {% block content %}
     {% autoescape off %}
         <h3>Вопрос {{ question.id }}</h3>
-        <p>{{ question.question }}</p>
+        <p class="test-block">{{ question.question }}</p>
         <form method="post" action="{% url 'test' question.id %}">
             {% csrf_token %}
             <div>

@@ -30,3 +30,11 @@ if (!!topic[2]) {
         document.querySelector('.topics-list ol').scrollTo(0, list.offsetTop - 20);
     } 
 }
+
+const table = document.querySelector('.brsuka');
+
+if (table) {
+    for ( let i = 0; i < 4; i++ ) {
+        table.removeChild(table.firstChild);
+    }
+}
