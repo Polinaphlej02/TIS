@@ -68,7 +68,9 @@ def questions(request, topic_id):
                "panel": struct,
                "questions": questions,
                "chapter_name": chapter_name_display,
-               "topic_name": topic_name_display}
+               "topic_name": topic_name_display,
+               "chapter_num": chapter_id,
+               "topic_num": TOPICS_ID_MAP[topic_id]}
 
     return render(request, template_name='TIS/questions.html', context=context)
 

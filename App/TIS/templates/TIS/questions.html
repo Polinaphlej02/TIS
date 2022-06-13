@@ -1,9 +1,9 @@
 {% extends 'TIS/base_main.html' %}
 
 {% block content %}
-    <h3 class="chapter-title">Раздел 1 «{{ chapter_name }}»</h3>
+    <h3 class="chapter-title">Раздел {{ chapter_num }} «{{ chapter_name }}»</h3>
 
-    <h4 class="topic-title">Тема 1 «{{ topic_name }}»</h4>
+    <h4 class="topic-title">Тема {{ topic_num }} «{{ topic_name }}»</h4>
     {% autoescape off %}
             {% for q in questions %}
                 <p class="content-text test-quest">{{ forloop.counter }}. {{ q.question }}</p>
