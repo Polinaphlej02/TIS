@@ -13,6 +13,10 @@ from .forms import *
 from django.http import HttpResponse, HttpResponseRedirect
 
 
+TOPICS_ID_MAP = {1: 1, 2: 2, 3: 1, 4: 2,
+                 5: 3, 6: 1, 7: 2, 8: 3}
+
+
 def create_panel_struct():
     chapters = Chapter.objects.all()
     topics = Topic.objects.all()
@@ -43,7 +47,9 @@ def topic(request, topic_id):
                "panel": struct,
                "theor_mat": theory_material_display,
                "chapter_name": chapter_name_display,
-               "topic_name": topic_name_display}
+               "topic_name": topic_name_display,
+               "chapter_num": chapter_id,
+               "topic_num": TOPICS_ID_MAP[topic_id]}
 
     return render(request, template_name='TIS/topic.html', context=context)
 
