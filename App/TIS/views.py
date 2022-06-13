@@ -130,13 +130,22 @@ def test(request, question_id):
     question_test = QuestionMini.objects.filter(id=question_id)[0]
     questions_num = len(QuestionMini.objects.all())
     next_question_id, prev_question_id = question_id + 1, question_id - 1
+    answers = Answer.objects.filter(id_question=question_id)
+    num_of_user_answers = len(AnswerStudent.objects.filter(id_question=question_id, id_student=request.user.id))
+    user_answered = False if num_of_user_answers == 0 else True
+
     struct = create_panel_struct()
     if request.method == "POST":
-        form = StudentAnswerForm(request.POST)
+        print(request.POST)
+        form_dict = request.POST.copy()
+        form_dict["id_question"] = question_id
+        form_dict["id_student"] = request.user.id
+        form = StudentAnswerForm(form_dict)
         print(form.fields)
         if form.is_valid():
             try:
                 form.save()
+                return redirect(f"/test/{question_id}")
             except:
                 form.add_error(None, "Ошибка добавления ответа")
     else:
@@ -148,6 +157,8 @@ def test(request, question_id):
                "questions_num": questions_num,
                "next_question_id": next_question_id,
                "prev_question_id": prev_question_id,
+               "answers": answers,
+               "user_answered": user_answered,
                "answer_form": form}
 
     return render(request, template_name='TIS/test_questions.html', context=context)

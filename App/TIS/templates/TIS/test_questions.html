@@ -5,8 +5,16 @@
         <p>{{ question.question }}</p>
         <form method="post" action="{% url 'test' question.id %}">
             {% csrf_token %}
-            {{ answer_form.ans_stud }}
-            <button type="submit">Ответить</button>
+            <div>
+                {% for answer in answers %}
+                    <input type="radio" name="ans_stud" id="answer-{{ forloop.counter }}" value="{{ answer.answer }}"></input>
+                    <label for="answer-{{ forloop.counter }}">{{ answer.answer }}</label>
+                    <br>
+                {% endfor %}
+            </div>
+            {% if user_answered == False %}
+                <button type="submit">Ответить</button>
+            {% endif %}
             <br><br>
         </form>
         {% if question.id != 1 %}
