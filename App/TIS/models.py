@@ -38,6 +38,7 @@ class QuestionMini(models.Model):
 
 class Answer(models.Model):
     answer = models.CharField(max_length=200)
+    is_correct = models.BooleanField()
     id_question = models.ForeignKey(QuestionMini, on_delete=models.CASCADE)
 
 
