@@ -2,12 +2,8 @@
 
 {% block content %}
     {% autoescape off %}
-<<<<<<< HEAD
         <h3>Вопрос {{ question.id }}</h3>
-        <p>{{ question.question }}</p>
-=======
         <p class="test-block">{{ question.question }}</p>
->>>>>>> 9b11016 (maxim)
         <form method="post" action="{% url 'test' question.id %}">
             {% csrf_token %}
             <div>
