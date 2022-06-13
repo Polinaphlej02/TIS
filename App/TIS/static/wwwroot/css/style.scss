@@ -841,3 +841,14 @@
     border-radius: 9em;
     box-shadow: inset 1px 1px 10px #f3faf7;
 }
+
+td, th {
+    padding: 6px;
+    border: 1px solid;
+    text-align: center;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
