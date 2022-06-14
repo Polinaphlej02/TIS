@@ -26,7 +26,7 @@
         {% if next_question_id <= questions_num %}
             <a href="{% url 'test' next_question_id %}"><button>Вопрос {{ next_question_id }}</button></a>
         {% else %}
-            <a href="{% url 'test_entry' %}"><button>Завершить тест</button></a>
+            <a href="{% url 'test_current_res' %}"><button>Завершить тест</button></a>
         {% endif %}
         <br><br>
         {% for i in questions_num|get_range %}

@@ -9,6 +9,7 @@ from .utils import DataMixin
 from django.contrib.auth.decorators import login_required
 from django.template.defaulttags import register
 from django.http import HttpResponseRedirect
+from django.db import connection
 
 
 TOPICS_ID_MAP = {1: 1, 2: 2, 3: 1, 4: 2,
@@ -139,12 +140,10 @@ def test(request, question_id):
 
     struct = create_panel_struct()
     if request.method == "POST":
-        print(request.POST)
         form_dict = request.POST.copy()
         form_dict["id_question"] = question_id
         form_dict["id_student"] = request.user.id
         form = StudentAnswerForm(form_dict)
-        print(form.fields)
         if form.is_valid():
             try:
                 form.save()
@@ -167,3 +166,52 @@ def test(request, question_id):
                "answer_form": form}
 
     return render(request, template_name='TIS/test_questions.html', context=context)
+
+
+@login_required(login_url='/login')
+def test_current_res(request):
+    struct = create_panel_struct()
+    cursor = connection.cursor()
+    user_id = request.user.id
+    questions_num = len(QuestionMini.objects.all())
+    stud_answers_num = len(AnswerStudent.objects.filter(id_student=user_id))
+    ans_correct_num = None
+
+    if stud_answers_num == 0:
+        last_rating_str = Student.objects.filter(id=user_id)[0].last_rating_str
+        if last_rating_str is not None:
+            ans_correct_num = int(last_rating_str.split(' / ')[0])
+    else:
+        best_rating_float = Student.objects.filter(id=user_id)[0].best_rating
+        best_rating_str = Student.objects.filter(id=user_id)[0].best_rating_str
+
+        join_query = f"""SELECT ta.answer, tas.ans_stud FROM tis_answer as ta INNER JOIN tis_answerstudent as tas 
+                         ON ta.id_question_id = tas.id_question_id 
+                         WHERE tas.id_student_id = {user_id} AND ta.is_correct = 1"""
+
+        cursor.execute(join_query)
+        results = cursor.fetchall()
+        ans_correct_num = 0
+        for right_ans, stud_ans in results:
+            if right_ans == stud_ans:
+                ans_correct_num += 1
+
+        last_rating_float = round(ans_correct_num / questions_num * 100, 2)
+        last_rating_str = f"{ans_correct_num} / {questions_num}"
+        if last_rating_float > best_rating_float:
+            best_rating_float = last_rating_float
+            best_rating_str = last_rating_str
+
+        update_stud_query = f"""UPDATE tis_student SET best_rating = {best_rating_float}, best_rating_str = '{best_rating_str}',
+                                last_rating_str = '{last_rating_str}' WHERE id = {user_id}"""
+        cursor.execute(update_stud_query)
+
+        delete_ans_query = f"""DELETE FROM tis_answerstudent WHERE id_student_id = {user_id}"""
+        cursor.execute(delete_ans_query)
+
+    context = {"title": "TIS",
+               "panel": struct,
+               "ans_correct_num": ans_correct_num,
+               "questions_num": questions_num}
+
+    return render(request, template_name='TIS/current_results.html', context=context)

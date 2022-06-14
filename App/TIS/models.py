@@ -13,6 +13,9 @@ class Student(AbstractUser):
     last_name = models.CharField(max_length=50, verbose_name="Фамилия")
     first_name = models.CharField(max_length=50, verbose_name="Имя")
     patronymic = models.CharField(max_length=50, verbose_name="Отчество")
+    best_rating = models.FloatField(null=True)
+    best_rating_str = models.CharField(max_length=50, null=True)
+    last_rating_str = models.CharField(max_length=50, null=True)
     num_group = models.ForeignKey(NumGroup, on_delete=models.CASCADE, verbose_name="Номер группы")
 
     REQUIRED_FIELDS = ["num_group_id"]

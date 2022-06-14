@@ -9,4 +9,6 @@ urlpatterns = [
     path('topics/<int:topic_id>/questions', questions, name='questions'),
     path('testentry/', test_entry, name='test_entry'),
     path('test/<int:question_id>', test, name='test'),
+    path('test/current_results', test_current_res, name='test_current_res'),
+    path('test/rating', test_current_res, name='student_rating')
 ]
