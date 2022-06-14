@@ -477,6 +477,50 @@
   line-height: 28px;
 }
 
+.registration-page .reg-error {
+  width: 620px;
+  background-color: #fff;
+  -webkit-border-radius: 15px;
+          border-radius: 15px;
+  border: 1px solid red;
+  -webkit-box-shadow: 2px 2px 5px red;
+          box-shadow: 2px 2px 5px red;
+  position: absolute;
+  left: -webkit-calc(50vw - 310px);
+  left: calc(50vw - 310px);
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.registration-page .reg-error ul {
+  margin: 5px auto;
+  padding: 0 5px;
+}
+
+.registration-page .reg-error ul li {
+  list-style-type: none;
+}
+
+.registration-page .reg-error ul li::marker {
+  display: none;
+}
+
+.registration-page .reg-error.group-error {
+  top: 1vh;
+}
+
+.registration-page .reg-error.login-error {
+  top: -webkit-calc(1vh + 35px);
+  top: calc(1vh + 35px);
+}
+
+.registration-page .reg-error.password-error {
+  top: -webkit-calc(1vh + 70px);
+  top: calc(1vh + 70px);
+}
+
 .base-main-page {
   margin: 0;
   height: 99vh;
@@ -781,7 +825,6 @@
   margin-left: 58px;
   font-weight: 600;
   color: #050544;
-  margin-top: 25px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -904,6 +947,10 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+.base-main-page .topic-number {
+  margin-left: 5px;
+}
+
 .base-main-page .test-quest,
 .base-main-page .theor-one {
   color: #050544;
@@ -997,6 +1044,23 @@
   font-size: 18px;
 }
 
+.chapter-quest {
+  margin-bottom: 5px;
+  font-size: 28px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  color: #050544;
+}
+
+.topic-quest {
+  margin-bottom: 5px;
+  font-size: 22px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  color: #050544;
+  margin-left: 45px;
+}
+
 .test-page {
   width: 400px;
   display: -webkit-box;
@@ -1061,6 +1125,7 @@
 
 .test-page .test-btns .rating-btn {
   margin-right: 50px;
+  margin-left: 20px;
 }
 
 .test-page .test-title {
@@ -1110,10 +1175,107 @@ table {
   font-weight: 600;
   color: #050544;
   line-height: 32px;
-  margin: 20px 0;
+  margin-bottom: 20px;
 }
 
 .tanswer {
   font-size: 16px;
   margin: 5px;
+  margin-top: 1px;
+  color: #050544;
+}
+
+.answer__wrapper {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.answer__wrapper label {
+  margin-left: 5px;
+}
+
+.number-quest {
+  color: #050544;
+}
+
+.next-prev-btn {
+  background-color: #fff;
+  color: #000;
+  -webkit-border-radius: 5px;
+          border-radius: 5px;
+}
+
+.next-prev-btn.next-btn {
+  margin-left: 10px;
+}
+
+.next-prev-btn:hover {
+  cursor: pointer;
+  color: #FFF;
+  background-image: -webkit-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: -o-linear-gradient(110deg, #000 0%, #001bf9 100%);
+  background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
+}
+
+.answer-btn {
+  margin-top: 10px;
+}
+
+.answer-btn.active-btn {
+  color: #050544;
+  font-weight: 600;
+}
+
+.numbery .number {
+  font-size: 15px;
+  margin: 0 2px;
+  text-decoration: underline;
+}
+
+.numbery .number:hover {
+  text-decoration: none;
+}
+
+.numbery .number.passed {
+  color: #dc07b8;
+}
+
+.numbery .number.not_passed {
+  color: #0c4ff8;
+}
+
+.end-test-btn {
+  color: #0c4ff8;
+  border-color: #000;
+  border-width: 1px;
+}
+
+.end-test-btn:hover {
+  -webkit-appearance: button;
+  cursor: pointer;
+  color: #050544;
+}
+
+.status {
+  font-size: 40px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  color: #050544;
+}
+
+.best-res {
+  margin-bottom: 15px;
+  font-size: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #050544;
+}
+
+.status-back-btn {
+  font-size: 16px;
 }

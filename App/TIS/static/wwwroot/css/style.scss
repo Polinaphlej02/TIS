@@ -358,6 +358,42 @@
             line-height: 28px;
         }
     }
+
+    .reg-error {
+        width: 620px;
+        background-color: #fff;
+        border-radius: 15px;
+        border: 1px solid red;
+        box-shadow: 2px 2px 5px red;
+        position: absolute;
+        left: calc(50vw - 310px);
+        display: flex;
+
+        ul {
+            margin: 5px auto;
+            padding: 0 5px;
+
+            li {
+                list-style-type: none;
+            }
+
+            li::marker {
+                display: none;
+            }
+        }
+
+        &.group-error {
+            top: 1vh;
+        }
+
+        &.login-error {
+            top: calc(1vh + 35px);
+        }
+
+        &.password-error {
+            top: calc(1vh + 70px);
+        }
+    }
 }
 
 //Topics page
@@ -607,7 +643,6 @@
         margin-left: 58px;
         font-weight: 600;
         color: #050544;
-        margin-top: 25px;
         display: flex;
     }
 
@@ -697,6 +732,10 @@
         }
     }
 
+.topic-number {
+    margin-left: 5px;
+}
+
     .test-quest,
     .theor-one {
         color: #050544; 
@@ -777,6 +816,23 @@
     }
 }
 
+.chapter-quest {
+    margin-bottom: 5px;
+    font-size: 28px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: #050544;
+}
+
+.topic-quest {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: #050544;
+    margin-left: 45px;
+}
+
 //TEST PAGE
 .test-page {
     width: 400px;
@@ -821,6 +877,7 @@
 
         .rating-btn {
             margin-right: 50px;
+            margin-left: 20px;
         }
     }
 
@@ -863,11 +920,101 @@ table {
     font-weight: 600;
     color: #050544;
     line-height: 32px;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .tanswer {
     font-size: 16px;
     margin: 5px;
+    margin-top: 1px;
+    color: #050544;
+}
+
+.answer__wrapper {
+    display: flex;
+    align-items: flex-start;
+
+    label {
+        margin-left: 5px;
+    }
+}
+
+.number-quest {
+    color: #050544;
+}
+
+.next-prev-btn {
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+
+    &.next-btn {
+        margin-left: 10px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: #FFF;
+        background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
+    }
+}
+
+.answer-btn {
+    margin-top: 10px;
+
+    &.active-btn{
+        color: #050544;
+        font-weight: 600;
+    }
+}
+
+.numbery {
+    .number {
+        font-size: 15px;
+        margin: 0 2px;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &.passed {
+            color: rgb(220, 7, 184);
+        }
+
+        &.not_passed {
+            color: rgb(12, 79, 248);
+        }
+    }
+}
+
+.end-test-btn {
+    color: rgb(12, 79, 248);
+    border-color: #000;
+    border-width: 1px;
+    
+    &:hover {
+        -webkit-appearance: button;
+        cursor: pointer;
+        color: #050544;
+    }
+}
+
+.status {
+    font-size: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    color: #050544;
+}
+
+.best-res {
+    margin-bottom: 15px;
+    font-size: 25px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #050544;
+}
+
+.status-back-btn {
+    font-size: 16px;
 }
 

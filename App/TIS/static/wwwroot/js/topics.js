@@ -17,7 +17,7 @@ if (pictures.length) {
 
 const topic = document.location.pathname.split('/');
 
-if (!!topic[2]) {
+if (!!topic[2] && topic[1] === "topics") {
     if (topic[2] < 3) {
         document.querySelector('.chapter-name-1').click();
     } else if (topic[2] >= 3 && topic[2] <= 5) {

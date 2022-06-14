@@ -1,11 +1,11 @@
 {% extends 'TIS/base_main.html' %}
 
 {% block content %}
-    <h3>Рейтинг</h3>
+    <h3 class="status">Рейтинг</h3>
     {% if best_rating_float is not None %}
-        <p>Ваш лучший результат {{ best_rating_str }} ({{ best_rating_float }} %)</p>
+        <p class="best-res">Ваш лучший результат {{ best_rating_str }} ({{ best_rating_float }} %)</p>
     {% else %}
-        <p>Для просмотра рейтинга пройдите тест!</p>
+        <p class="best-res">Для просмотра рейтинга пройдите тест!</p>
     {% endif %}
-    <a href="{% url 'test_entry' %}">Назад</a>
+    <a class="status-back-btn" href="{% url 'test_entry' %}">Назад</a>
 {% endblock %}

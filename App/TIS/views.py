@@ -64,7 +64,7 @@ def questions(request, topic_id):
 
     context = {"title": "TIS",
                "panel": struct,
-               "questions": question_objs,
+               "question_objs": question_objs,
                "chapter_name": chapter_name_display,
                "topic_name": topic_name_display,
                "chapter_num": chapter_id,

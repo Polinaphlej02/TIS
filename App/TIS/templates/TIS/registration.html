@@ -35,23 +35,25 @@
         <div class="group__wrapper">
             <label for="{{ form.num_group.id_for_label }}">{{ form.num_group.label }}</label>
             {{ form.num_group }}
-            <div>{{ form.num_group.errors }}</div>
+            <div class="reg-error group-error">{{ form.num_group.errors }}</div>
         </div>
     </div>
     <div class="login__wrapper">
         <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label> 
         {{ form.username }}
-        <div>{{ form.username.errors }}</div>
+        <div class="reg-error login-error">{{ form.username.errors }}</div>
     </div>
     <div class="password__wrapper">
         <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
         {{ form.password }}
-        <div>{{ form.password.errors }}</div>
+        <div class="reg-error password-error">{{ form.password.errors }}</div>
     </div>
     <button type="submit">Регистрация</button>
     <button class="cancel-reg"><a href="{% url 'login' %}">Назад</a></button>
 
 </form>
 </body>
-<script type="text/javascript" src="../../static/wwwroot/js/reg.js"></script>
+<script type="text/javascript" src="../../static/wwwroot/js/reg.js">
+    init();
+</script>
 </html>
