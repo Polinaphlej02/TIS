@@ -201,7 +201,8 @@ def test_current_res(request):
 
         last_rating_float = round(ans_correct_num / questions_num * 100, 2)
         last_rating_str = f"{ans_correct_num} / {questions_num}"
-        if last_rating_float > best_rating_float:
+
+        if (best_rating_float is None) or (last_rating_float > best_rating_float):
             best_rating_float = last_rating_float
             best_rating_str = last_rating_str
 

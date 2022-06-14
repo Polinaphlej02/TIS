@@ -12,6 +12,7 @@ class AddStudent(forms.ModelForm):
 
         widgets = {
             'password': forms.PasswordInput(),
+            'num_group': forms.TextInput()
         }
 
     def clean_password(self):
