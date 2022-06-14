@@ -7,18 +7,12 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .utils import DataMixin
 from django.contrib.auth.decorators import login_required
-from django.template.defaulttags import register
 from django.http import HttpResponseRedirect
 from django.db import connection
 
 
 TOPICS_ID_MAP = {1: 1, 2: 2, 3: 1, 4: 2,
                  5: 3, 6: 1, 7: 2, 8: 3}
-
-
-@register.filter
-def get_range(value):
-    return range(1, value + 1)
 
 
 def create_panel_struct():
@@ -122,7 +116,6 @@ def logout_user(request):
 @login_required(login_url='/login')
 def test_entry(request):
     struct = create_panel_struct()
-
     context = {"title": "Тест (главная)",
                "panel": struct}
 
@@ -135,8 +128,17 @@ def test(request, question_id):
     questions_num = len(QuestionMini.objects.all())
     next_question_id, prev_question_id = question_id + 1, question_id - 1
     answers = Answer.objects.filter(id_question=question_id)
-    num_of_user_answers = len(AnswerStudent.objects.filter(id_question=question_id, id_student=request.user.id))
-    user_answered = False if num_of_user_answers == 0 else True
+    all_stud_answers = AnswerStudent.objects.filter(id_student=request.user.id)
+    num_of_stud_answers = len(AnswerStudent.objects.filter(id_question=question_id, id_student=request.user.id))
+    stud_answered = False if num_of_stud_answers == 0 else True
+
+    passed_questions = [ans.id_question.id for ans in all_stud_answers]
+    passed_questions_map = {}
+    for i in range(1, questions_num + 1):
+        if i in passed_questions:
+            passed_questions_map[i] = "passed"
+            continue
+        passed_questions_map[i] = "not_passed"
 
     struct = create_panel_struct()
     if request.method == "POST":
@@ -162,7 +164,8 @@ def test(request, question_id):
                "next_question_id": next_question_id,
                "prev_question_id": prev_question_id,
                "answers": answers,
-               "user_answered": user_answered,
+               "stud_answered": stud_answered,
+               "passed_questions_map": passed_questions_map,
                "answer_form": form}
 
     return render(request, template_name='TIS/test_questions.html', context=context)
