@@ -15,7 +15,7 @@
                 </div>
                 {% endfor %}
             </div>
-            {% if user_answered == False %}
+            {% if stud_answered == False %}
                 <button class="answer-btn active-btn" type="submit">Ответить</button>
             {% else %}
                 <button class="answer-btn" type="submit" disabled>Ответить</button>
@@ -28,12 +28,12 @@
         {% if next_question_id <= questions_num %}
             <a href="{% url 'test' next_question_id %}"><button class="next-prev-btn next-btn">Вопрос {{ next_question_id }}&rarr;</button></a>
         {% else %}
-            <a href="{% url 'test_current_res' %}"><button>Завершить тест</button></a>
+            <a href="{% url 'test_current_res' %}"><button class="end-test-btn">Завершить тест</button></a>
         {% endif %}
         <br><br>
         <div class="numbery">
-            {% for i in questions_num|get_range %}
-                <a class="number" href="{% url 'test' i %}">{{ forloop.counter }}</a>
+            {% for id, class in passed_questions_map.items %}
+                <a class="number {{ class }}" href="{% url 'test' id %}">{{ id }}</a>
             {% endfor %}
         </div>
     {% endautoescape %}

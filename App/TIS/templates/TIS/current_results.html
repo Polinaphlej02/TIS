@@ -1,9 +1,9 @@
 {% extends 'TIS/base_main.html' %}
 
 {% block content %}
-    <h3>Результаты</h3>
+    <h3 class="status">Результаты</h3>
 
-    Верно {{ ans_correct_num }} из {{ questions_num }}
-    <br><br>
-    <a href="{% url 'test_entry' %}">Главная</a>
+    <p class="best-res"> Верно {{ ans_correct_num }} из {{ questions_num }}</p>
+    
+    <a class="status-back-btn" href="{% url 'test_entry' %}">Главная</a>
 {% endblock %}
