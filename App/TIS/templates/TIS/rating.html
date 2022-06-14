@@ -1,0 +1,7 @@
+{% extends 'TIS/base_main.html' %}
+
+{% block content %}
+    <h3>Рейтинг</h3>
+    <p>Ваш лучший результат {{ best_rating_str }} ({{ best_rating_float }} %)</p>
+    <a href="{% url 'test_entry' %}">Назад</a>
+{% endblock %}

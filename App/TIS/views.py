@@ -65,12 +65,12 @@ def questions(request, topic_id):
     chapter_id = topic_obj_display.id_chapter.id
     chapter_name_display = Chapter.objects.filter(id=chapter_id)[0].chapter_name
 
-    questions = Question.objects.filter(id_topic=topic_id)
+    question_objs = Question.objects.filter(id_topic=topic_id)
     struct = create_panel_struct()
 
     context = {"title": "TIS",
                "panel": struct,
-               "questions": questions,
+               "questions": question_objs,
                "chapter_name": chapter_name_display,
                "topic_name": topic_name_display,
                "chapter_num": chapter_id,
@@ -123,7 +123,7 @@ def logout_user(request):
 def test_entry(request):
     struct = create_panel_struct()
 
-    context = {"title": "TIS",
+    context = {"title": "Тест (главная)",
                "panel": struct}
 
     return render(request, template_name='TIS/test.html', context=context)
@@ -155,7 +155,7 @@ def test(request, question_id):
     else:
         form = StudentAnswerForm()
 
-    context = {"title": "TIS",
+    context = {"title": "Тест",
                "panel": struct,
                "question": question_test,
                "questions_num": questions_num,
@@ -202,16 +202,33 @@ def test_current_res(request):
             best_rating_float = last_rating_float
             best_rating_str = last_rating_str
 
-        update_stud_query = f"""UPDATE tis_student SET best_rating = {best_rating_float}, best_rating_str = '{best_rating_str}',
+        update_stud_query = f"""UPDATE tis_student SET best_rating = {best_rating_float}, 
+                                best_rating_str = '{best_rating_str}',
                                 last_rating_str = '{last_rating_str}' WHERE id = {user_id}"""
         cursor.execute(update_stud_query)
 
         delete_ans_query = f"""DELETE FROM tis_answerstudent WHERE id_student_id = {user_id}"""
         cursor.execute(delete_ans_query)
 
-    context = {"title": "TIS",
+    context = {"title": "Результаты теста",
                "panel": struct,
                "ans_correct_num": ans_correct_num,
                "questions_num": questions_num}
 
     return render(request, template_name='TIS/current_results.html', context=context)
+
+
+@login_required(login_url='/login')
+def rating(request):
+    struct = create_panel_struct()
+    user_id = request.user.id
+    stud_obj = Student.objects.filter(id=user_id)[0]
+    best_rating_float = stud_obj.best_rating
+    best_rating_str = stud_obj.best_rating_str
+
+    context = {"title": "Рейтинг",
+               "panel": struct,
+               "best_rating_float": best_rating_float,
+               "best_rating_str": best_rating_str}
+
+    return render(request, template_name='TIS/rating.html', context=context)

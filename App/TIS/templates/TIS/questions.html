@@ -5,7 +5,7 @@
 
     <h4 class="topic-title">Тема {{ topic_num }} «{{ topic_name }}»</h4>
     {% autoescape off %}
-            {% for q in questions %}
+            {% for q in question_objs %}
                 <p class="content-text test-quest">{{ forloop.counter }}. {{ q.question }}</p>
             {% endfor %}
     {% endautoescape %}

@@ -6,7 +6,7 @@
         <h1 class="test-title">Итоговый тест</h1>
         <div class="test-btns">
             <a href="{% url 'test' 1 %}"><button class="start-test-btn" type="submit">Начать тест</button></a>
-            <button class="rating-btn" type="submit">Мой рейтинг</button>
+            <a href="{% url 'student_rating' %}"><button class="rating-btn" type="submit">Мой рейтинг</button></a>
         </div>
     </div>
     {% endautoescape %}

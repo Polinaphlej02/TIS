@@ -1,5 +1,5 @@
 from TIS.views import *
-from django.urls import path, re_path
+from django.urls import path
 
 urlpatterns = [
     path('login/', LoginUser.as_view(), name='login'),
@@ -10,5 +10,5 @@ urlpatterns = [
     path('testentry/', test_entry, name='test_entry'),
     path('test/<int:question_id>', test, name='test'),
     path('test/current_results', test_current_res, name='test_current_res'),
-    path('test/rating', test_current_res, name='student_rating')
+    path('test/rating', rating, name='student_rating')
 ]
