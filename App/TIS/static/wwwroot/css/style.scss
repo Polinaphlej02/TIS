@@ -863,11 +863,66 @@ table {
     font-weight: 600;
     color: #050544;
     line-height: 32px;
-    margin: 20px 0;
+    margin-bottom: 20px;
 }
 
 .tanswer {
     font-size: 16px;
     margin: 5px;
+    margin-top: 1px;
+    color: #050544;
 }
 
+.answer__wrapper {
+    display: flex;
+    align-items: flex-start;
+
+    label {
+        margin-left: 5px;
+    }
+}
+
+.number-quest {
+    color: #050544;
+}
+
+.next-prev-btn {
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+
+    &.next-btn {
+        margin-left: 10px;
+    }
+
+    &:hover {
+        cursor: pointer;
+        color: #FFF;
+        background-image: linear-gradient(-20deg, #000 0%, #001bf9 100%);
+    }
+}
+
+.answer-btn {
+    margin-top: 10px;
+
+    &.active-btn{
+        color: #050544;
+        font-weight: 600;
+    }
+}
+
+.numbery {
+    .number {
+        font-size: 15px;
+        margin: 0 2px;
+        text-decoration: underline;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &.passed {
+            color: rgb(174, 12, 147);
+        }
+    }
+}

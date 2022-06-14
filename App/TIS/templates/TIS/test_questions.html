@@ -2,35 +2,39 @@
 
 {% block content %}
     {% autoescape off %}
-        <h3>Вопрос {{ question.id }}</h3>
+        <h3 class="number-quest">Вопрос {{ question.id }}</h3>
         <p class="test-block">{{ question.question }}</p>
         <form method="post" action="{% url 'test' question.id %}">
             {% csrf_token %}
             <div>
                 {% for answer in answers %}
+                <div class="answer__wrapper">
                     <input type="radio" name="ans_stud" id="answer-{{ forloop.counter }}" value="{{ answer.answer }}">
-                    <label for="answer-{{ forloop.counter }}">{{ answer.answer }}</label>
+                    <label class="tanswer" for="answer-{{ forloop.counter }}">{{ answer.answer }}</label>
                     <br>
+                </div>
                 {% endfor %}
             </div>
-            {% if stud_answered == False %}
-                <button type="submit">Ответить</button>
+            {% if user_answered == False %}
+                <button class="answer-btn active-btn" type="submit">Ответить</button>
             {% else %}
-                <button type="submit" disabled style="background: rebeccapurple">Ответить</button>
+                <button class="answer-btn" type="submit" disabled>Ответить</button>
             {% endif %}
             <br><br>
         </form>
         {% if question.id != 1 %}
-            <a href="{% url 'test' prev_question_id %}"><button>Вопрос {{ prev_question_id }}</button></a>
+            <a href="{% url 'test' prev_question_id %}"><button class="next-prev-btn">&larr;Вопрос {{ prev_question_id }}</button></a>
         {% endif %}
         {% if next_question_id <= questions_num %}
-            <a href="{% url 'test' next_question_id %}"><button>Вопрос {{ next_question_id }}</button></a>
+            <a href="{% url 'test' next_question_id %}"><button class="next-prev-btn next-btn">Вопрос {{ next_question_id }}&rarr;</button></a>
         {% else %}
             <a href="{% url 'test_current_res' %}"><button>Завершить тест</button></a>
         {% endif %}
         <br><br>
-        {% for id, class in passed_questions_map.items %}
-            <a href="{% url 'test' id %}">{{ id }} {{ class }}</a>
-        {% endfor %}
+        <div class="numbery">
+            {% for i in questions_num|get_range %}
+                <a class="number" href="{% url 'test' i %}">{{ forloop.counter }}</a>
+            {% endfor %}
+        </div>
     {% endautoescape %}
 {% endblock %}
