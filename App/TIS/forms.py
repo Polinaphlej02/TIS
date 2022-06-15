@@ -17,6 +17,12 @@ class AddStudent(forms.ModelForm):
             'num_group': forms.TextInput(),
         }
 
+        error_messages = {
+            'num_group': {
+                'invalid_choice': _("Введенный номер группы не существует")
+            }
+        }
+
     def clean_password(self):
         password = self.cleaned_data.get('password')
         password_validation.validate_password(password, self.instance)
@@ -31,10 +37,12 @@ class AddStudent(forms.ModelForm):
         return username
 
     def save(self, commit=True):
+        self.clean_num_group()
         user = super(AddStudent, self).save(commit=False)
         user.set_password(self.cleaned_data['password'])
         if commit:
             user.save()
+
         return user
 
 
