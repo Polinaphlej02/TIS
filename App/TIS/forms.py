@@ -1,3 +1,5 @@
+import re
+from django.core.exceptions import ValidationError
 from django import forms
 from django.contrib.auth import password_validation
 from django.utils.translation import gettext_lazy as _
@@ -12,13 +14,21 @@ class AddStudent(forms.ModelForm):
 
         widgets = {
             'password': forms.PasswordInput(),
-            'num_group': forms.TextInput()
+            'num_group': forms.TextInput(),
         }
 
     def clean_password(self):
         password = self.cleaned_data.get('password')
         password_validation.validate_password(password, self.instance)
         return password
+
+    def clean_username(self):
+        username = self.cleaned_data["username"]
+        username_is_valid = bool(len(re.findall(r"\w+@bsuir.by", username)))
+        if not username_is_valid:
+            raise ValidationError("Имя пользователя должно удовлетворять шаблону example@bsuir.by")
+
+        return username
 
     def save(self, commit=True):
         user = super(AddStudent, self).save(commit=False)

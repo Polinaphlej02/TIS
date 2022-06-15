@@ -7,7 +7,7 @@ class NumGroup(models.Model):
 
 
 class Student(AbstractUser):
-    username = models.CharField(max_length=150, verbose_name="Логин", unique=True)
+    username = models.CharField(max_length=150, verbose_name="Логин", help_text="example@bsuir.by", unique=True)
     last_name = models.CharField(max_length=50, verbose_name="Фамилия")
     first_name = models.CharField(max_length=50, verbose_name="Имя")
     patronymic = models.CharField(max_length=50, verbose_name="Отчество")
